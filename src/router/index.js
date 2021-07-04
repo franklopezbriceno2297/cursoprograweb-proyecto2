@@ -1,7 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+
+import Home from '@/views/Home.vue'
+import Categories from '@/views/Categories.vue'
+import Pages from '@/views/Pages.vue'
 
 const routes = [
+  {
+    path: '/categorias/:categoryPath',
+    name: 'Pages',
+    component: Pages
+  },
+  {
+    path: '/categorias',
+    name: 'Categories',
+    component: Categories
+  },
   {
     path: '/',
     name: 'Home',

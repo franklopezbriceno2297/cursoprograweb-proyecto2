@@ -2,6 +2,7 @@ import { createStore } from 'vuex'
 
 // Modules
 import categories from './modules/categories'
+import pages from './modules/pages'
 
 export default createStore({
   state: {
@@ -11,6 +12,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    categories
+    categories,
+    pages
   }
 })
