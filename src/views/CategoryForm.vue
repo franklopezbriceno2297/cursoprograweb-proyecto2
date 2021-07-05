@@ -67,7 +67,7 @@ export default {
       return (this.creationMode ? 'Guardar' : 'Guardar Edición')
     },
     title () {
-      return (this.creationMode ? 'Agregar nueva categoría' : 'Editar Categoría')
+      return (this.creationMode ? 'Agregar Nueva Categoría' : 'Editar Categoría')
     },
     creationMode () {
       return (this.$route.params.windowMode === 'nueva')

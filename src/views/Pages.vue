@@ -14,12 +14,12 @@
           </ol>
         </nav>
       </div>
-      <router-link class="btn btn-success" to="/wiki/nueva/0">Agregar Página</router-link>
+      <router-link class="btn btn-success" to="/wiki/crear/0">Agregar Wiki</router-link>
     </div>
     <table class="table table-striped mb-4">
       <thead>
         <tr>
-          <th scope="col">Paginas</th>
+          <th scope="col">Wikis</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -29,8 +29,8 @@
           <th>
             <div class="d-flex justify-content-end">
               <router-link :to="`/wiki/mostrar/${page.id}`" class="btn btn-secondary btn-sm">Mostrar</router-link>
-              <!-- <a href="/paginas/{{id}}/edit" class="btn btn-warning btn-sm mx-2">Editar</a>
-              <a href="/paginas/{{id}}/delete" class="btn btn-danger btn-sm">Eliminar</a> -->
+              <router-link :to="`/wiki/editar/${page.id}`" class="btn btn-warning btn-sm mx-2">Editar</router-link>
+              <button @click="deletePage(page.id)" class="btn btn-danger btn-sm">Eliminar</button>
             </div>
           </th>
         </tr>
@@ -44,17 +44,22 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   name: 'Pages',
   data: () => ({
-    // categoryPath: $route.params.categoryPath
   }),
   computed: {
     ...mapGetters(
       'pages',
       { pages: 'getPagesByCategory' }
+    )
+  },
+  methods: {
+    ...mapMutations(
+      'pages',
+      ['deletePage']
     )
   }
 }

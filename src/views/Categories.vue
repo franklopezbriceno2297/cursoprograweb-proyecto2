@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between mb-3">
       <h2 class="mb-0">{{title}}</h2>
       <div class="d-flex align-items-center">
-        <router-link class="btn btn-success" to="/categoria/nueva/0">Agregar</router-link>
+        <router-link class="btn btn-success" to="/categoria/nueva/0">Agregar Categoría</router-link>
       </div>
     </div>
     <div class="row">
@@ -38,7 +38,7 @@ import { mapGetters, mapMutations } from 'vuex'
 export default {
   name: 'Categories',
   data: () => ({
-    title: 'Categorias',
+    title: 'Categorías',
     errorMessage: '',
     successMessage: ''
   }),
