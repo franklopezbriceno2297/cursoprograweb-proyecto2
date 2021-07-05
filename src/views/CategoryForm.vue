@@ -16,7 +16,7 @@
         <input v-model="path" required type="text" class="form-control" id="inputPathCategory" placeholder="Ruta de la categoría" />
       </div>
       <div class="col-12 mt-4">
-        <button type="button" :disabled="missingInputs" @click="addCategory" class="btn btn-primary">Guardar</button>
+        <button type="button" :disabled="(missingInputs || editModeWithBadParams)" @click="addCategory" class="btn btn-primary">{{buttonTitle}}</button>
         <button type="button" :disabled="emptyInputs" @click="clearForm" class="btn btn-dark mx-2">Limpiar</button>
       </div>
       <div class="col-4">
@@ -39,8 +39,19 @@ export default {
     errorMessage: '',
     successMessage: '',
     label: '',
-    path: ''
+    path: '',
+    currentPath: null
   }),
+  mounted () {
+    if (!this.creationMode) {
+      const currentCategory = this.getCategory({ path: this.$route.params.path })
+      if (currentCategory) {
+        this.path = currentCategory.path
+        this.currentPath = currentCategory.path
+        this.label = currentCategory.label
+      }
+    }
+  },
   computed: {
     ...mapGetters(
       'categories',
@@ -52,17 +63,24 @@ export default {
     missingInputs () {
       return (this.label.trim() === '' || this.path.trim() === '')
     },
+    buttonTitle () {
+      return (this.creationMode ? 'Guardar' : 'Guardar Edición')
+    },
     title () {
       return (this.creationMode ? 'Agregar nueva categoría' : 'Editar Categoría')
     },
     creationMode () {
       return (this.$route.params.windowMode === 'nueva')
+    },
+    editModeWithBadParams () {
+      const newCategory = this.getCategory({ path: this.path.trim() })
+      return (!this.creationMode && ((this.currentPath === null) || !!newCategory))
     }
   },
   methods: {
     ...mapMutations(
       'categories',
-      { saveCategory: 'addCategory' }
+      ['createCategory', 'deleteCategory']
     ),
     clearForm () {
       this.label = ''
@@ -76,16 +94,24 @@ export default {
           path: this.path.trim(),
           label: this.label.trim()
         }
-        this.saveCategory(newCategory)
-        this.clearForm()
 
-        this.successMessage = 'Categoría Agregada!'
-        setTimeout(() => {
-          this.successMessage = ''
-        }, 6000)
+        if (!this.creationMode) {
+          this.deleteCategory(this.currentPath)
+        }
+        this.createCategory(newCategory)
+
+        if (this.creationMode) {
+          this.clearForm()
+          this.successMessage = '¡Categoría Agregada!'
+          setTimeout(() => {
+            this.successMessage = ''
+          }, 6000)
+        } else {
+          this.$router.push({ path: '/categorias' })
+        }
       } else {
         this.successMessage = ''
-        this.errorMessage = 'Esta ruta ya existe!'
+        this.errorMessage = '¡Esta ruta ya existe!'
       }
     }
   }

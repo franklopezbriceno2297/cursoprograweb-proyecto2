@@ -7,7 +7,7 @@ import CategoryForm from '@/views/CategoryForm.vue'
 
 const routes = [
   {
-    path: '/categoria/:windowMode',
+    path: '/categoria/:windowMode/:path',
     name: 'CategoryForm',
     component: CategoryForm
   },

@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between mb-3">
       <h2 class="mb-0">{{title}}</h2>
       <div class="d-flex align-items-center">
-        <router-link class="btn btn-success" to="/categoria/nueva">Agregar</router-link>
+        <router-link class="btn btn-success" to="/categoria/nueva/0">Agregar</router-link>
       </div>
     </div>
     <div class="row">
@@ -16,7 +16,7 @@
               <!-- <p class="card-text small">Fecha de Creación: {{created}}</p> -->
               <div class="d-flex justify-content-end">
                 <router-link :to="`/categorias/${category.path}`" class="btn btn-secondary btn-sm">Mostrar</router-link>
-                <router-link to="/categorias/id/edit" class="btn btn-warning btn-sm mx-2">Editar</router-link>
+                <router-link :to="`/categoria/editar/${category.path}`" class="btn btn-warning btn-sm mx-2">Editar</router-link>
                 <button @click="deleteCategory(category.path)" class="btn btn-danger btn-sm">Eliminar</button>
               </div>
             </div>

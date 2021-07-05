@@ -7,7 +7,7 @@ const categories = {
     categories: categoryList
   }),
   mutations: {
-    addCategory (state, payload) {
+    createCategory (state, payload) {
       state.categories.push(payload)
     },
     deleteCategory (state, path) {
