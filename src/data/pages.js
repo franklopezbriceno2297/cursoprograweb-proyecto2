@@ -23,7 +23,7 @@ const pages = [
   },
   {
     id: '74e227ac-8fe5-46c4-bf3c-b565f45934fb',
-    title: 'Lorem ipsum',
+    title: 'Lorem ipsum example',
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc a nibh lectus. Duis vel augue nec dolor sodales hendrerit ut ac sem. In hac habitasse platea dictumst. Maecenas lobortis dignissim erat non feugiat. Aenean laoreet quis mauris nec faucibus. Sed porttitor aliquam cursus. Morbi porttitor ipsum justo, in suscipit nisi tristique vitae. Vestibulum pharetra nunc et ex euismod venenatis. Proin sed iaculis elit. Donec a aliquam eros, nec porttitor nisl. Morbi ex felis, ornare ac iaculis at, consequat nec est. Duis vitae risus volutpat dui dictum rhoncus.',
     categoryPath: 'libros'
   }

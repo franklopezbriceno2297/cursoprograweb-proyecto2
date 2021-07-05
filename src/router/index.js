@@ -4,8 +4,14 @@ import Home from '@/views/Home.vue'
 import Categories from '@/views/Categories.vue'
 import Pages from '@/views/Pages.vue'
 import CategoryForm from '@/views/CategoryForm.vue'
+import PageForm from '@/views/PageForm.vue'
 
 const routes = [
+  {
+    path: '/wiki/:windowMode/:pageId',
+    name: 'WikiForm',
+    component: PageForm
+  },
   {
     path: '/categoria/:windowMode/:path',
     name: 'CategoryForm',

@@ -5,16 +5,16 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb mb-0">
             <li class="breadcrumb-item">
-              <a href="/">Wiki</a>
+              <router-link to="/">Wiki</router-link>
             </li>
             <li class="breadcrumb-item">
-              <a href="/categorias">Categorias</a>
+              <router-link to="/categorias">Categorias</router-link>
             </li>
             <li class="breadcrumb-item active" aria-current="page">{{$route.params.categoryPath}}</li>
           </ol>
         </nav>
       </div>
-      <a class="btn btn-success" href="/paginas/create">Agregar Página</a>
+      <router-link class="btn btn-success" to="/wiki/nueva/0">Agregar Página</router-link>
     </div>
     <table class="table table-striped mb-4">
       <thead>
@@ -28,13 +28,12 @@
           <th>{{page.title}}</th>
           <th>
             <div class="d-flex justify-content-end">
-              <a href="/paginas/{{id}}" class="btn btn-secondary btn-sm">Mostrar</a>
-              <a href="/paginas/{{id}}/edit" class="btn btn-warning btn-sm mx-2">Editar</a>
-              <a href="/paginas/{{id}}/delete" class="btn btn-danger btn-sm">Eliminar</a>
+              <router-link :to="`/wiki/mostrar/${page.id}`" class="btn btn-secondary btn-sm">Mostrar</router-link>
+              <!-- <a href="/paginas/{{id}}/edit" class="btn btn-warning btn-sm mx-2">Editar</a>
+              <a href="/paginas/{{id}}/delete" class="btn btn-danger btn-sm">Eliminar</a> -->
             </div>
           </th>
         </tr>
-
         <tr v-if="(pages({ categoryPath: $route.params.categoryPath }).length === 0)">
           <th>Vacío</th>
           <th></th>

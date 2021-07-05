@@ -11,6 +11,7 @@ const pages = {
   actions: {
   },
   getters: {
+    getPageByID: (state, getters) => ({ id }) => (state.pages.find(page => (page.id === id))),
     getPagesByCategory: (state, getters) => ({ categoryPath }) => (categoryPath ? state.pages.filter(page => (page.categoryPath === categoryPath)) : [])
   }
 }

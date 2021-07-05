@@ -13,7 +13,6 @@
             <div class="card-body">
               <h5 class="card-title mb-3">{{category.label}}</h5>
               <p class="card-text small mb-2">Ruta: {{category.path}}</p>
-              <!-- <p class="card-text small">Fecha de Creación: {{created}}</p> -->
               <div class="d-flex justify-content-end">
                 <router-link :to="`/categorias/${category.path}`" class="btn btn-secondary btn-sm">Mostrar</router-link>
                 <router-link :to="`/categoria/editar/${category.path}`" class="btn btn-warning btn-sm mx-2">Editar</router-link>
